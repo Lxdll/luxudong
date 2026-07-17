@@ -24,8 +24,8 @@ async function api(path, options = {}) {
 const login = await api('/auth/login', {
   method: 'POST',
   body: {
-    email: process.env.DIRECTUS_ADMIN_EMAIL,
-    password: process.env.DIRECTUS_ADMIN_PASSWORD,
+    email: process.env.ADMIN_EMAIL || process.env.DIRECTUS_ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD || process.env.DIRECTUS_ADMIN_PASSWORD,
   },
 });
 const token = login.access_token;
