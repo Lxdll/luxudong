@@ -81,7 +81,7 @@ export const BadgeHome = () => {
                     头像<br />待补充
                   </div>
 
-                  <h1 className="badge-name" id="badge-name">姓名待补充</h1>
+                  <h1 className="badge-name" id="badge-name">鲁旭东</h1>
                   <p className="badge-role">Frontend Engineer / Web Creator</p>
 
                   <div className="badge-actions">
