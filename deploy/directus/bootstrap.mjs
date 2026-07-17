@@ -58,7 +58,11 @@ const fields = {
 };
 
 for (const [collection, collectionFields] of Object.entries(fields)) {
-  try {
+  const existingCollection = await api(`/collections/${collection}`, { token }).catch((error) => {
+    if (error.status === 403 || error.status === 404) return null;
+    throw error;
+  });
+  if (!existingCollection) {
     await api('/collections', {
       method: 'POST', token,
       body: {
@@ -71,24 +75,22 @@ for (const [collection, collectionFields] of Object.entries(fields)) {
       },
     });
     console.log(`Created collection: ${collection}`);
-  } catch (error) {
-    if (error.status !== 409) throw error;
+  } else {
     console.log(`Collection already exists: ${collection}`);
   }
 }
 
+const existingRelations = await api('/relations/posts', { token });
 for (const relation of [
   { collection: 'posts', field: 'cover_image', related_collection: 'directus_files', meta: { many_collection: 'posts', many_field: 'cover_image', one_collection: 'directus_files' }, schema: { table: 'posts', column: 'cover_image', foreign_key_table: 'directus_files', foreign_key_column: 'id', on_delete: 'SET NULL' } },
   { collection: 'posts', field: 'category', related_collection: 'categories', meta: { many_collection: 'posts', many_field: 'category', one_collection: 'categories' }, schema: { table: 'posts', column: 'category', foreign_key_table: 'categories', foreign_key_column: 'id', on_delete: 'SET NULL' } },
 ]) {
-  try {
+  if (!existingRelations.some((item) => item.field === relation.field)) {
     await api('/relations', { method: 'POST', token, body: relation });
-  } catch (error) {
-    if (error.status !== 409) throw error;
   }
 }
 
-const publicPolicies = await api('/policies?filter[name][_eq]=$t:public&limit=1', { token });
+const publicPolicies = await api('/policies?filter[admin_access][_eq]=false&filter[app_access][_eq]=false&limit=1', { token });
 const publicPolicy = publicPolicies?.[0];
 if (!publicPolicy) throw new Error('Directus public policy was not found');
 
