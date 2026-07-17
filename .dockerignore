@@ -4,6 +4,10 @@ node_modules
 dist
 .npm_cache
 .env*
-deploy
+deploy/Caddyfile
+deploy/compose.yml
+deploy/directus
+deploy/scripts
+deploy/.env.example
 README.md
 *.log
