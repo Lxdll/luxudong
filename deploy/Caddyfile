@@ -17,6 +17,21 @@ www.luxudong.me {
     redir https://luxudong.me{uri} permanent
 }
 
+hedmayner.cn {
+    encode zstd gzip
+    reverse_proxy hedmayner-web:8080
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+}
+
+www.hedmayner.cn {
+    redir https://hedmayner.cn{uri} permanent
+}
+
 cms.luxudong.me {
     encode zstd gzip
     reverse_proxy directus:8055
