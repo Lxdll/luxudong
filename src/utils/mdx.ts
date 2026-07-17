@@ -54,7 +54,6 @@ async function fetchCmsPosts(slug?: string): Promise<Post[]> {
   const params = new URLSearchParams({
     fields: 'id,slug,title,subtitle,body,published_at,read_time,cover_image,category.name',
     sort: '-published_at',
-    'filter[status][_eq]': 'published',
   });
   if (slug) params.set('filter[slug][_eq]', slug);
 
