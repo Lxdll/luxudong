@@ -345,16 +345,20 @@ svg {
 .badge-portrait {
   width: 74px;
   height: 74px;
-  display: grid;
-  place-items: center;
   margin-top: 50px;
+  overflow: hidden;
   border: 1px solid color-mix(in oklch, var(--badge-bg) 18%, transparent);
   border-radius: 50%;
-  color: color-mix(in oklch, var(--badge-bg) 50%, transparent);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-align: center;
+  background: color-mix(in oklch, var(--badge-fg) 92%, var(--badge-bg));
+}
+
+.badge-portrait-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
 }
 
 .badge-name {

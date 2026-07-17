@@ -1,5 +1,8 @@
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import badgeAvatar96 from '../assets/avatar-noir-badge-96.png';
+import badgeAvatar192 from '../assets/avatar-noir-badge-192.png';
+import badgeAvatar384 from '../assets/avatar-noir-badge-384.png';
 import { SiteDock } from '../components/SiteDock';
 
 export const BadgeHome = () => {
@@ -77,8 +80,18 @@ export const BadgeHome = () => {
                     <p className="badge-number">NO. 001</p>
                   </div>
 
-                  <div className="badge-portrait" aria-label="头像待补充">
-                    头像<br />待补充
+                  <div className="badge-portrait">
+                    <img
+                      className="badge-portrait-image"
+                      src={badgeAvatar96}
+                      srcSet={`${badgeAvatar96} 96w, ${badgeAvatar192} 192w, ${badgeAvatar384} 384w`}
+                      sizes="(max-width: 760px) 62px, 74px"
+                      width="74"
+                      height="74"
+                      alt="鲁旭东的头像"
+                      decoding="async"
+                      draggable={false}
+                    />
                   </div>
 
                   <h1 className="badge-name" id="badge-name">鲁旭东</h1>
