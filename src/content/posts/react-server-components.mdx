@@ -1,0 +1,60 @@
+---
+title: "The Future of React: Server Components Explained"
+subtitle: "Diving deep into how RSC changes the mental model of React development and performance optimization strategies."
+date: "Oct 24, 2024"
+readTime: "8 min read"
+category: "Engineering"
+image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+author:
+  name: "Luxudong"
+  avatar: "https://github.com/shadcn.png"
+---
+
+import { Counter } from '../../components/mdx/Counter';
+
+React Server Components (RSC) represent the biggest architectural shift in the React ecosystem since hooks. They allow us to render components on the server that have zero impact on the client-side bundle size. But what does this actually mean for how we build applications?
+
+## The Mental Model Shift
+
+Traditionally, we've thought of React components as client-side entities that might occasionally be server-rendered for initial HTML. With RSC, we flip this model: components are server-first by default, and we opt-in to client-side interactivity only when needed.
+
+> "Server Components allow developers to build apps that span the server and client, combining the rich interactivity of client-side apps with the improved performance of traditional server rendering."
+
+### Interactive Component Demo
+
+Here is a fully interactive React component embedded directly inside this Markdown file:
+
+<Counter />
+
+### Key Benefits
+
+* **Zero Bundle Size:** Server components are not sent to the browser.
+* **Direct Backend Access:** Access your database directly from your components.
+* **Automatic Code Splitting:** Client components imported by server components are automatically code-split.
+
+```tsx
+// Server Component
+async function ProductDetails({ id }) {
+  // Direct database access!
+  const product = await db.products.findById(id);
+  
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      {/* Client Component for interactivity */}
+      <AddToCartButton id={product.id} />
+    </div>
+  );
+}
+```
+
+## When to use Client Components?
+
+You still need Client Components for:
+
+1. Interactivity and event listeners (`onClick()`, `onChange()`, etc.)
+2. State and Lifecycle Effects (`useState()`, `useReducer()`, `useEffect()`)
+3. Browser-only APIs
+
+The future of React is hybrid. By leveraging the strengths of both the server and the client, we can build applications that are faster, lighter, and easier to maintain.
