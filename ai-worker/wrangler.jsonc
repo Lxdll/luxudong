@@ -7,6 +7,12 @@
   "observability": {
     "enabled": true
   },
+  "secrets": {
+    "required": [
+      "TURNSTILE_SECRET_KEY",
+      "REINDEX_SECRET"
+    ]
+  },
   "ai": {
     "binding": "AI",
     "remote": true

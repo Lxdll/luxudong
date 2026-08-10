@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      - run: npx wrangler types --check
       - run: npm run typecheck
       - run: npm test
 
@@ -69,12 +70,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: ai-worker
           command: deploy
-          secrets: |
-            TURNSTILE_SECRET_KEY
-            REINDEX_SECRET
-        env:
-          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
-          REINDEX_SECRET: ${{ secrets.AI_REINDEX_SECRET }}
       - name: Refresh knowledge index
         env:
           AI_API_URL: ${{ vars.AI_API_URL }}
