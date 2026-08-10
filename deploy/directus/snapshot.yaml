@@ -41,13 +41,13 @@ collections:
       icon: article
       item_duplication_fields: null
       note: 博客文章
-      preview_url: null
+      preview_url: https://cms.luxudong.me/cms-preview/start?item={{id}}&version={{$version}}
       singleton: false
       sort: null
       sort_field: null
       translations: null
       unarchive_value: draft
-      versioning: false
+      versioning: true
     schema:
       name: posts
 fields:
@@ -431,11 +431,21 @@ fields:
       field: body
       group: null
       hidden: false
-      interface: input-code
+      interface: input-rich-text-md
       note: null
       options:
-        language: markdown
-        lineNumber: true
+        toolbar:
+          - heading
+          - bold
+          - italic
+          - strikethrough
+          - bullist
+          - numlist
+          - blockquote
+          - code
+          - link
+          - table
+          - image
       readonly: false
       required: true
       searchable: true

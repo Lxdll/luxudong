@@ -23,12 +23,82 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run knowledge:check
       - run: npm run lint
       - run: npm run build
 
+  validate_ai:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+
+  deploy_ai:
+    if: github.event_name != 'pull_request' && vars.AI_ASSISTANT_ENABLED == 'true'
+    needs: validate_ai
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run knowledge:check:strict
+      - name: Install AI worker dependencies
+        working-directory: ai-worker
+        run: npm ci
+      - name: Apply D1 migrations
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ai-worker
+          command: d1 migrations apply luxudong-ai --remote
+      - name: Deploy AI worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: ai-worker
+          command: deploy
+          secrets: |
+            TURNSTILE_SECRET_KEY
+            REINDEX_SECRET
+        env:
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+          REINDEX_SECRET: ${{ secrets.AI_REINDEX_SECRET }}
+      - name: Refresh knowledge index
+        env:
+          AI_API_URL: ${{ vars.AI_API_URL }}
+          REINDEX_SECRET: ${{ secrets.AI_REINDEX_SECRET }}
+        run: >
+          curl --fail-with-body
+          -X POST "$AI_API_URL/internal/reindex"
+          -H "Authorization: Bearer $REINDEX_SECRET"
+      - name: Verify AI service readiness
+        env:
+          AI_API_URL: ${{ vars.AI_API_URL }}
+        run: |
+          curl --fail-with-body "$AI_API_URL/health"
+          curl --fail-with-body "$AI_API_URL/v1/meta" -o /tmp/ai-meta.json
+          node -e "const m=require('/tmp/ai-meta.json');if(!m.ready)process.exit(1)"
+
   image:
-    if: github.event_name != 'pull_request'
-    needs: validate
+    if: >-
+      github.event_name != 'pull_request' &&
+      always() &&
+      needs.validate.result == 'success' &&
+      needs.validate_ai.result == 'success' &&
+      (needs.deploy_ai.result == 'success' || needs.deploy_ai.result == 'skipped')
+    needs: [validate, validate_ai, deploy_ai]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -47,7 +117,11 @@ jobs:
         with:
           context: .
           push: true
-          build-args: VITE_CMS_URL=https://cms.luxudong.me
+          build-args: |
+            VITE_CMS_URL=https://cms.luxudong.me
+            VITE_AI_ASSISTANT_ENABLED=${{ vars.AI_ASSISTANT_ENABLED || 'false' }}
+            VITE_AI_API_URL=${{ vars.AI_API_URL }}
+            VITE_TURNSTILE_SITE_KEY=${{ vars.TURNSTILE_SITE_KEY }}
           tags: |
             ghcr.io/lxdll/luxudong-web:sha-${{ github.sha }}
             ghcr.io/lxdll/luxudong-web:latest

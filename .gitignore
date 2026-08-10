@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 .npm_cache
 dist
+!deploy/directus/extensions/cms-preview/dist/
+!deploy/directus/extensions/cms-preview/dist/index.js
 dist-ssr
 *.local
 
@@ -28,4 +30,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+ai-worker/.dev.vars
+ai-worker/.wrangler/
 deploy/backups/

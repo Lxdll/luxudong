@@ -9,6 +9,7 @@ luxudong.me {
         Strict-Transport-Security "max-age=31536000; includeSubDomains"
         X-Content-Type-Options "nosniff"
         Referrer-Policy "strict-origin-when-cross-origin"
+        Content-Security-Policy "frame-ancestors 'self' https://cms.luxudong.me"
         -Server
     }
 }
@@ -39,6 +40,30 @@ cms.luxudong.me {
         Strict-Transport-Security "max-age=31536000; includeSubDomains"
         X-Content-Type-Options "nosniff"
         Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+}
+
+chenjianru.asia {
+    encode zstd gzip
+    reverse_proxy chenjianru-app:8000
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        -Server
+    }
+}
+
+admin.chenjianru.asia {
+    encode zstd gzip
+    reverse_proxy chenjianru-app:8000
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
         -Server
     }
 }

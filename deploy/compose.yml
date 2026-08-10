@@ -66,6 +66,10 @@ services:
       CORS_ENABLED: "true"
       CORS_ORIGIN: https://luxudong.me
       CORS_CREDENTIALS: "false"
+      CMS_PREVIEW_SECRET: ${CMS_PREVIEW_SECRET}
+      CMS_PREVIEW_WEB_URL: https://luxudong.me
+      CMS_PREVIEW_TTL_SECONDS: "600"
+      EXTENSIONS_MUST_LOAD: "true"
       WEBSOCKETS_ENABLED: "false"
       RATE_LIMITER_ENABLED: "true"
       RATE_LIMITER_POINTS: "50"
@@ -76,6 +80,7 @@ services:
     volumes:
       - directus_uploads:/directus/uploads
       - ./directus:/project
+      - ./directus/extensions:/directus/extensions:ro
     networks:
       - edge
       - internal

@@ -60,7 +60,7 @@ const CareerSheet = ({ entry, index, progress }: CareerSheetProps) => {
             ))}
           </div>
           <div className="career-visual" aria-label={entry.visualLabel}>
-            {entry.visual}<br />待补充
+            {entry.visual}
           </div>
         </div>
         <footer className="career-footer">

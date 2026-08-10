@@ -1,4 +1,6 @@
 const baseUrl = process.env.DIRECTUS_INTERNAL_URL || 'http://127.0.0.1:8055';
+const publicUrl = (process.env.PUBLIC_URL || 'https://cms.luxudong.me').replace(/\/$/, '');
+const previewUrl = `${publicUrl}/cms-preview/start?item={{id}}&version={{$version}}`;
 
 async function api(path, options = {}) {
   const response = await fetch(`${baseUrl}${path}`, {
@@ -45,7 +47,7 @@ const fields = {
     { field: 'slug', type: 'string', meta: { interface: 'input', required: true, width: 'half' }, schema: { is_nullable: false, is_unique: true, max_length: 255 } },
     { field: 'title', type: 'string', meta: { interface: 'input', required: true }, schema: { is_nullable: false, max_length: 255 } },
     { field: 'subtitle', type: 'text', meta: { interface: 'input-multiline' }, schema: {} },
-    { field: 'body', type: 'text', meta: { interface: 'input-code', required: true, options: { language: 'markdown', lineNumber: true } }, schema: { is_nullable: false } },
+    { field: 'body', type: 'text', meta: { interface: 'input-rich-text-md', required: true, options: { toolbar: ['heading', 'bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'code', 'link', 'table', 'image'] } }, schema: { is_nullable: false } },
     { field: 'published_at', type: 'timestamp', meta: { interface: 'datetime', width: 'half' }, schema: {} },
     { field: 'read_time', type: 'string', meta: { interface: 'input', width: 'half' }, schema: { max_length: 50 } },
     { field: 'cover_image', type: 'uuid', meta: { interface: 'file-image', special: ['file'] }, schema: {} },
@@ -79,6 +81,22 @@ for (const [collection, collectionFields] of Object.entries(fields)) {
     console.log(`Collection already exists: ${collection}`);
   }
 }
+
+// Keep existing installations aligned with the current authoring and preview setup.
+await api('/fields/posts/body', {
+  method: 'PATCH', token,
+  body: {
+    meta: {
+      interface: 'input-rich-text-md',
+      options: { toolbar: ['heading', 'bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'code', 'link', 'table', 'image'] },
+    },
+  },
+});
+
+await api('/collections/posts', {
+  method: 'PATCH', token,
+  body: { meta: { preview_url: previewUrl, versioning: true } },
+});
 
 const existingRelations = await api('/relations/posts', { token });
 for (const relation of [

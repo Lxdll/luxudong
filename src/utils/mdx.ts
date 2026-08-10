@@ -48,6 +48,24 @@ const mapPost = (post: DirectusPost): Post => ({
     : '',
 });
 
+export async function getPreviewPostById(id: string, version: string, grant: string): Promise<Post> {
+  if (!CMS_URL) throw new Error('CMS URL is not configured');
+
+  const params = new URLSearchParams({ version });
+  const response = await fetch(`${CMS_URL}/cms-preview/item/${encodeURIComponent(id)}?${params}`, {
+    headers: { Authorization: `Preview ${grant}` },
+  });
+
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('预览凭证已失效，请返回 Directus 重新打开预览。');
+  }
+  if (response.status === 404) throw new Error('没有找到这篇草稿。');
+  if (!response.ok) throw new Error(`草稿读取失败（${response.status}）。`);
+
+  const payload = await response.json() as { data: DirectusPost };
+  return mapPost(payload.data);
+}
+
 async function fetchCmsPosts(slug?: string): Promise<Post[]> {
   if (!CMS_URL) throw new Error('CMS URL is not configured');
 
@@ -78,17 +96,24 @@ function getBundledPosts(): Post[] {
 }
 
 export async function getAllPosts(): Promise<Post[]> {
+  const bundledPosts = getBundledPosts();
   try {
-    return await fetchCmsPosts();
+    const cmsPosts = await fetchCmsPosts();
+    const cmsSlugs = new Set(cmsPosts.map((post) => post.slug));
+    return [
+      ...cmsPosts,
+      ...bundledPosts.filter((post) => !cmsSlugs.has(post.slug)),
+    ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
     console.warn('CMS unavailable; using bundled articles.', error);
-    return getBundledPosts();
+    return bundledPosts;
   }
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
   try {
-    return (await fetchCmsPosts(slug))[0];
+    return (await fetchCmsPosts(slug))[0]
+      || getBundledPosts().find((post) => post.slug === slug);
   } catch (error) {
     console.warn('CMS unavailable; using bundled article.', error);
     return getBundledPosts().find((post) => post.slug === slug);

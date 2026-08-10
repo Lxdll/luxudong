@@ -1,0 +1,59 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "luxudong-ai-assistant",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-23",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+  "vectorize": [
+    {
+      "binding": "VECTOR_INDEX",
+      "index_name": "luxudong-knowledge",
+      "remote": true
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "luxudong-ai",
+      "database_id": "98c557d7-b7c4-4e9d-af03-d11de95a804f",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CHAT_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 6,
+        "period": 60
+      }
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "17 * * * *"
+    ]
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://luxudong.me,https://www.luxudong.me,http://localhost:5173",
+    "DIRECTUS_URL": "https://cms.luxudong.me",
+    "DAILY_GENERATION_LIMIT": "150",
+    "TURNSTILE_BYPASS": "false"
+  },
+  "rules": [
+    {
+      "type": "Text",
+      "globs": [
+        "**/*.mdx"
+      ],
+      "fallthrough": true
+    }
+  ]
+}

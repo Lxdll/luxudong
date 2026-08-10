@@ -1,0 +1,362 @@
+{
+  "profile": {
+    "name": "鲁旭东",
+    "englishName": "Luxudong",
+    "role": "Frontend Engineer / AI Product Builder",
+    "location": "当前所在地未公开",
+    "summary": "拥有 4 年前端开发经验的前端工程师，长期使用 React、TypeScript 与现代前端工程化工具。经历覆盖 ToB 报价与合同系统、AI 邮件与日历应用、组件库和开发者工具，重视可维护性、用户体验与工程效率。",
+    "summaryEn": "A frontend engineer with four years of experience, focused on React, TypeScript, and modern frontend engineering. His work spans enterprise quotation and contract systems, AI-powered email and calendar products, component libraries, and developer tooling, with an emphasis on maintainability, user experience, and engineering efficiency.",
+    "currentFocus": [
+      "React、TypeScript 与复杂前端应用工程化",
+      "AI 功能在真实产品场景中的体验与工程落地",
+      "开发者工具、组件复用与个人技术内容建设"
+    ],
+    "skills": [
+      "HTML、CSS、JavaScript、ES6 与 TypeScript",
+      "React、Ant Design，并了解 Vue",
+      "Vite、Webpack、Vite 插件与前端脚手架",
+      "Git 协作、代码规范、组件库和业务组件建设",
+      "Electron、MQTT 与 AI 邮件、日历功能集成",
+      "持续学习并通过博客和开源项目沉淀技术经验"
+    ],
+    "links": [
+      {
+        "label": "个人网站",
+        "url": "/"
+      },
+      {
+        "label": "职业经历",
+        "url": "/career"
+      },
+      {
+        "label": "项目",
+        "url": "/projects"
+      },
+      {
+        "label": "博客",
+        "url": "/blog"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Lxdll"
+      }
+    ]
+  },
+  "career": [
+    {
+      "kicker": "Archive 01 / Education",
+      "meta": "2017 — 2021",
+      "title": "计算机科学与技术",
+      "entity": "天津理工大学 / 本科",
+      "location": "天津 / China",
+      "lead": "系统学习计算机网络、数据结构和数据库等基础课程，并在组织协作与团队沟通中建立工程师所需的综合能力。",
+      "facts": [
+        {
+          "label": "专业基础",
+          "value": "计算机科学与技术本科，主修计算机网络、数据结构、数据库等课程。"
+        },
+        {
+          "label": "荣誉",
+          "value": "在校期间多次获得国家奖学金及校级三好学生荣誉。"
+        },
+        {
+          "label": "组织经历",
+          "value": "担任班长并组织多次大型集体活动，积累沟通、协调和管理经验。"
+        },
+        {
+          "label": "能力形成",
+          "value": "打下计算机基础，并逐步形成对前端开发和产品交互的兴趣。"
+        }
+      ],
+      "visual": "EDUCATION / TJUT",
+      "visualLabel": "天津理工大学计算机科学与技术本科经历",
+      "tags": [
+        "计算机科学与技术",
+        "国家奖学金",
+        "班长"
+      ],
+      "note": "Archive 01 / Computer science foundation and leadership."
+    },
+    {
+      "kicker": "Archive 02 / Internship",
+      "meta": "2020.10 — 2021.06",
+      "title": "前端实习",
+      "entity": "清研灵智信息咨询（天津）有限公司",
+      "location": "天津 / China",
+      "lead": "参与问卷调查系统研发，负责问卷题目设置、交互和相关页面维护，并参与技术选型与方案设计。",
+      "facts": [
+        {
+          "label": "核心工作",
+          "value": "负责问卷调研模块，主导问卷题目设置和交互的设计与研发。"
+        },
+        {
+          "label": "交互优化",
+          "value": "引入拖动和虚拟滚动能力，改善大量题目场景下的操作体验。"
+        },
+        {
+          "label": "业务能力",
+          "value": "实现题目信息配置及题目之间的联动关系，使问卷系统更具灵活性。"
+        },
+        {
+          "label": "技术栈",
+          "value": "主要使用 Vue 2 与 Webpack，并参与项目技术方案讨论。"
+        }
+      ],
+      "visual": "INTERNSHIP / SURVEY",
+      "visualLabel": "问卷调查系统前端实习经历",
+      "tags": [
+        "Vue 2",
+        "Webpack",
+        "虚拟滚动"
+      ],
+      "note": "Archive 02 / First production experience in frontend engineering."
+    },
+    {
+      "kicker": "Archive 03 / Enterprise",
+      "meta": "2021.07 — 2024.02",
+      "title": "前端开发工程师",
+      "entity": "腾讯云科技有限公司",
+      "location": "China",
+      "lead": "负责 ToB 一体化售卖平台中的产品报价与合同核心链路，独立研发合同模板编辑器，并参与组件库建设。",
+      "facts": [
+        {
+          "label": "核心业务",
+          "value": "负责磐石系统的产品报价和合同模块研发、维护及核心链路优化。"
+        },
+        {
+          "label": "合同编辑器",
+          "value": "独立调研并开发合同模板编辑器，支持模板骨架与个性化内容配置，优化合同创建流程。"
+        },
+        {
+          "label": "组件建设",
+          "value": "基于 React 组件库开发基础组件和业务组件，适配系统设计风格并提升团队研发效率。"
+        },
+        {
+          "label": "技术栈",
+          "value": "主要使用 React 与 TypeScript，面向复杂 ToB 业务持续提升代码质量和可维护性。"
+        }
+      ],
+      "visual": "TENCENT CLOUD / PANGU",
+      "visualLabel": "腾讯云磐石系统产品报价与合同模块经历",
+      "tags": [
+        "React",
+        "TypeScript",
+        "ToB"
+      ],
+      "note": "Archive 03 / Complex business flows, editors and reusable components."
+    },
+    {
+      "kicker": "Archive 04 / AI Product",
+      "meta": "2024.05 — 2025.01",
+      "title": "前端开发工程师",
+      "entity": "北京细红线科技有限公司",
+      "location": "北京 / China",
+      "lead": "使用 React、Vite 与 Electron 构建邮件、日历应用，主导邮件润色、内容总结等 AI 功能的前端落地。",
+      "facts": [
+        {
+          "label": "产品研发",
+          "value": "负责 Jarvis 1 assistant 中邮件和日历模块的前端页面开发与体验优化。"
+        },
+        {
+          "label": "AI 落地",
+          "value": "设计并实现邮件内容润色、内容总结等能力，与后端和 AI 团队完成端到端功能闭环。"
+        },
+        {
+          "label": "实时通信",
+          "value": "完善 MQTT 通信逻辑，增强实时消息推送和日程同步的稳定性。"
+        },
+        {
+          "label": "基础建设",
+          "value": "参与组件库、代码规范和前端架构优化，提升开发效率与协作质量。"
+        }
+      ],
+      "visual": "JARVIS / AI ASSISTANT",
+      "visualLabel": "Jarvis 1 assistant 邮件、日历与 AI 功能经历",
+      "tags": [
+        "React",
+        "Electron",
+        "AI Product"
+      ],
+      "note": "Archive 04 / Human-centered AI features in everyday productivity."
+    },
+    {
+      "kicker": "Archive 05 / Profile",
+      "meta": "4 YEARS / FRONTEND",
+      "title": "前端工程与 AI 产品",
+      "entity": "前端开发工程师",
+      "location": "当前所在地未公开",
+      "lead": "专注 React、TypeScript 和现代前端工程化，兼具复杂业务系统、AI 产品功能与开发者工具的实践经验。",
+      "facts": [
+        {
+          "label": "工程方向",
+          "value": "持续关注复杂前端应用的架构、组件复用、可维护性和用户体验。"
+        },
+        {
+          "label": "AI 能力",
+          "value": "具备 AI 邮件与日历功能落地经验，并正在建设带引用追溯的个人网站 RAG 助手。"
+        },
+        {
+          "label": "个人项目",
+          "value": "开发 React Playground、Markdown React 插件、低代码编辑器和项目创建脚手架。"
+        },
+        {
+          "label": "知识输出",
+          "value": "重视学习过程中的积累，通过博客、文章和开源项目持续沉淀。"
+        }
+      ],
+      "visual": "FRONTEND / AI / TOOLS",
+      "visualLabel": "前端工程、AI 产品和开发者工具能力概览",
+      "tags": [
+        "Frontend",
+        "AI Engineering",
+        "Developer Tools"
+      ],
+      "note": "Archive 05 / Building maintainable products and useful developer experiences."
+    }
+  ],
+  "projects": [
+    {
+      "slug": "ai-assistant",
+      "title": "个人网站 AI 助手",
+      "summary": "使用开源 Embedding、混合检索和可追溯引用构建的个人网站 RAG 助手。",
+      "role": "个人项目 / 方案设计与工程实现",
+      "technologies": [
+        "Cloudflare Workers AI",
+        "Qwen3",
+        "Vectorize",
+        "D1",
+        "React"
+      ],
+      "highlights": [
+        "使用 Qwen3 Embedding 0.6B 与 Qwen3 30B-A3B 开源模型",
+        "融合 Vectorize 语义检索与 D1 全文检索，并通过 RRF 重排",
+        "提供流式回答、来源追溯、低置信度拒答与额度降级"
+      ],
+      "url": "/projects"
+    },
+    {
+      "slug": "jarvis-1-assistant",
+      "title": "Jarvis 1 assistant",
+      "summary": "融合人机交互、邮件、日历和生活娱乐模块的智能助手产品，探索 AI 在日常场景中的应用。",
+      "role": "北京细红线科技有限公司 / 前端开发工程师 / 2024.05—2025.01",
+      "technologies": [
+        "React",
+        "Vite",
+        "Electron",
+        "MQTT"
+      ],
+      "highlights": [
+        "负责邮件与日历模块的前端页面开发",
+        "主导邮件润色、内容总结等 AI 功能落地",
+        "完善 MQTT 实时推送与同步机制，并参与前端基础建设"
+      ],
+      "url": "/projects"
+    },
+    {
+      "slug": "panshi-system",
+      "title": "磐石系统",
+      "summary": "售卖腾讯云产品的一体化 ToB 平台，覆盖报价、测算、合同和履约等核心模块。",
+      "role": "腾讯云科技有限公司 / 前端开发工程师 / 2021.07—2024.02",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Component Library"
+      ],
+      "highlights": [
+        "负责产品报价和合同模块的开发与优化",
+        "独立调研并开发合同模板编辑器，改善模板维护与客户定制流程",
+        "建设基础组件和业务组件，适配设计体系并提升团队效率"
+      ],
+      "url": "/projects"
+    },
+    {
+      "slug": "survey-system",
+      "title": "问卷调查系统",
+      "summary": "支持创建、发布和分享问卷的调研系统，具备复杂题目设置和联动能力。",
+      "role": "清研灵智信息咨询（天津）有限公司 / 前端实习 / 2020.10—2021.06",
+      "technologies": [
+        "Vue 2",
+        "Webpack",
+        "Virtual Scroll"
+      ],
+      "highlights": [
+        "负责问卷相关页面开发与维护",
+        "通过拖动和虚拟滚动优化题目设置体验",
+        "实现题目信息配置及题目之间的联动关系"
+      ],
+      "url": "/projects"
+    },
+    {
+      "slug": "react-playground",
+      "title": "React Playground",
+      "summary": "浏览器中的 React 在线代码运行平台，支持 TSX/JSX 实时编译、类型提示和运行结果预览。",
+      "role": "个人开源项目",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Babel",
+        "Monaco Editor"
+      ],
+      "highlights": [
+        "基于 @babel/standalone 在浏览器中即时转译代码",
+        "集成 Monaco Editor 与 @typescript/ata 提供编辑和类型体验",
+        "支持可拖拽分栏、代码分享与导出"
+      ],
+      "url": "https://github.com/Lxdll/react-playground"
+    },
+    {
+      "slug": "vite-plugin-markdown-react",
+      "title": "vite-plugin-markdown-react",
+      "summary": "让 Markdown 可以作为 React 组件导入，并允许在 Markdown 中直接使用 React 组件。",
+      "role": "个人开源项目",
+      "technologies": [
+        "React",
+        "Vite",
+        "Markdown"
+      ],
+      "highlights": [
+        "支持 Markdown 组件化与 React 组件嵌入",
+        "结合 unplugin-auto-import 自动导入指定目录组件",
+        "支持 Frontmatter，适用于博客、知识库和文档站"
+      ],
+      "url": "https://github.com/Lxdll/vite-plugin-markdown-react"
+    },
+    {
+      "slug": "low-code-editor",
+      "title": "低代码页面编辑器",
+      "summary": "基于 React 的低代码可视化搭建平台，支持拖拽物料、组件树配置和组件联动。",
+      "role": "个人开源项目",
+      "technologies": [
+        "React",
+        "TypeScript",
+        "react-dnd",
+        "Zustand",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "支持将物料拖入组件树任意层级，并使用 Zustand 管理配置",
+        "通过 JSON 递归渲染和 cloneElement 实现动态属性配置",
+        "使用 ref 暴露方法与全局注册机制完成组件联动"
+      ],
+      "url": "https://github.com/Lxdll/low-code-editor"
+    },
+    {
+      "slug": "project-scaffold",
+      "title": "项目创建脚手架",
+      "summary": "用于快速生成 React 或 Vue 项目的个人脚手架，可按需选择 TypeScript、Vitest 等工具。",
+      "role": "个人项目",
+      "technologies": [
+        "Node.js",
+        "Prompts",
+        "React",
+        "Vue"
+      ],
+      "highlights": [
+        "移除通用脚手架中不需要的示例和文件",
+        "固化个人代码格式、工程工具与项目模板偏好",
+        "通过实现过程学习成熟脚手架和流行工具的源码设计"
+      ],
+      "url": "/projects"
+    }
+  ]
+}

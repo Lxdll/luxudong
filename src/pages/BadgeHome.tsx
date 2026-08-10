@@ -4,6 +4,7 @@ import badgeAvatar96 from '../assets/avatar-noir-badge-96.png';
 import badgeAvatar192 from '../assets/avatar-noir-badge-192.png';
 import badgeAvatar384 from '../assets/avatar-noir-badge-384.png';
 import { SiteDock } from '../components/SiteDock';
+import { profile } from '../data/site';
 
 export const BadgeHome = () => {
   const reduceMotion = useReducedMotion();
@@ -94,8 +95,8 @@ export const BadgeHome = () => {
                     />
                   </div>
 
-                  <h1 className="badge-name" id="badge-name">鲁旭东</h1>
-                  <p className="badge-role">Frontend Engineer / Web Creator</p>
+                  <h1 className="badge-name" id="badge-name">{profile.name}</h1>
+                  <p className="badge-role">{profile.role}</p>
 
                   <div className="badge-actions">
                     <Link className="badge-action" to="/projects">项目展示</Link>
