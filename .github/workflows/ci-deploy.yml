@@ -124,6 +124,10 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
+    if: >-
+      always() &&
+      github.event_name != 'pull_request' &&
+      needs.image.result == 'success'
     needs: image
     runs-on: ubuntu-latest
     environment: production
