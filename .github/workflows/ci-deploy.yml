@@ -92,7 +92,7 @@ jobs:
       always() &&
       needs.validate.result == 'success' &&
       needs.validate_ai.result == 'success' &&
-      (needs.deploy_ai.result == 'success' || needs.deploy_ai.result == 'skipped')
+      needs.deploy_ai.result != 'cancelled'
     needs: [validate, validate_ai, deploy_ai]
     runs-on: ubuntu-latest
     permissions:
